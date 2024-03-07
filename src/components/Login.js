@@ -7,9 +7,9 @@ import {
 } from "firebase/auth";
 import { checkValidate } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BACKGROUND_IMAGE, USER_AVATAR, userAvatar } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -18,7 +18,6 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
@@ -53,15 +52,11 @@ const Login = () => {
 
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName }));
-
-              navigate("/browse");
-              // Profile updated!
-              // ...
             })
             .catch((error) => {
               // An error occurred
@@ -87,7 +82,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
+          // navigate("/browse");
           // ...
         })
         .catch((error) => {
@@ -101,10 +96,7 @@ const Login = () => {
   return (
     <div className="bg-black relative">
       <Header />
-      <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/a9ee5c28-3db3-493d-905b-1ae6a06cb86b/CA-en-20240219-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-        alt="background-img"
-      />
+      <img src={BACKGROUND_IMAGE} alt="background-img" />
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <form
         onSubmit={(e) => {
