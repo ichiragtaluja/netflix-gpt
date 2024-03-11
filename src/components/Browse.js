@@ -12,7 +12,7 @@ const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   return (
-    <div>
+    <div className="bg-black bg-opacity-50">
       <Header />
       {showGptSearch ? (
         <GptSearch />

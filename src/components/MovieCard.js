@@ -8,7 +8,7 @@ const MovieCard = ({ posterPath }) => {
       <img
         src={IMG_CDN_URL + posterPath}
         alt={"Movie card"}
-        className="w-36 h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+        className="w-36 md:w-48 h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
       />
     </div>
   );

@@ -19,14 +19,20 @@ const GptSearch = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="fixed -z-10">
-        <img src={BACKGROUND_IMAGE} alt="background-img" />
+        <img
+          className="h-screen w-screen object-cover"
+          src={BACKGROUND_IMAGE}
+          alt="background-img"
+        />
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
-      <GptSearchBar />
-      <GptMovieSuggestions />
-    </div>
+      <div>
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
+    </>
   );
 };
 

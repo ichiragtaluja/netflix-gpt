@@ -44,7 +44,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex justify-between items-center w-full fixed top-0 z-10 bg-gradient-to-b from-black">
+    <div className="flex flex-col justify-between items-center w-full fixed top-0 z-20 bg-gradient-to-b from-black md:flex-row">
       <img className="w-48" src={LOGO} alt="netflix-logo" />
       {user && (
         <div className="flex items-center">
@@ -54,7 +54,11 @@ const Header = () => {
           >
             GPT Search
           </button>
-          <img className="w-8" src={user?.photoURL || USER_AVATAR} alt="" />
+          <img
+            className="hidden md:inline-block w-8"
+            src={user?.photoURL || USER_AVATAR}
+            alt=""
+          />
           <button
             onClick={handleSignOut}
             className="ml-4 mr-4 px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:bg-red-700"
