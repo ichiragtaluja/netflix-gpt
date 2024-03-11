@@ -22,6 +22,7 @@ const GptSearch = () => {
     <div>
       <div className="fixed -z-10">
         <img src={BACKGROUND_IMAGE} alt="background-img" />
+        <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
       <GptSearchBar />
       <GptMovieSuggestions />
