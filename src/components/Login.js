@@ -24,6 +24,22 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
 
+  const handleTestButtonClick = () => {
+    signInWithEmailAndPassword(auth, "ichiragtaluja@gmail.com", "Shivi@11111")
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+
+        // navigate("/browse");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + "-" + errorMessage);
+      });
+  };
+
   const handleButtonClick = () => {
     //validate form data
     let nameValue = "Undefined"; // default value
@@ -137,6 +153,20 @@ const Login = () => {
         >
           {isSignInForm ? "Sign In" : "Sign-Up"}
         </button>
+        {isSignInForm && (
+          // <button
+          //   onClick={handleButtonClick}
+          //   className="rounded-sm font-bold bg-red-600 p-3 mt-6  bg-blue-500 text-white"
+          // >
+          //   Login with Test Credentials
+          // </button>
+          <button
+            onClick={handleTestButtonClick}
+            className="rounded-sm font-bold bg-blue-500 p-3 mt-6 border border-blue-500 text-white hover:bg-blue-400 hover:border-transparent transition-colors duration-300"
+          >
+            Login with Test Credentials
+          </button>
+        )}
         {isSignInForm ? (
           <p onClick={toggleSignInForm} className=" text-sm my-4 text-gray-500">
             New to Netflix?{" "}
