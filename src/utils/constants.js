@@ -10,10 +10,11 @@ export const USER_AVATAR =
 export const API_OPTIONS = {
   method: "GET",
   headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMjJhODE5YWE4YzQ2Yjk1NDU4MWUxMmMwNDJmMDk1OSIsInN1YiI6IjY1ZTllYTgzMzM5NmI5MDE4Njg0ZGNlNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rlDYJvPquoQKvuGl_lYBvfai8tgSBtQ0Jbb7D1Q_g3c",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
     accept: "application/json",
   },
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w780/";
+
+export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;
