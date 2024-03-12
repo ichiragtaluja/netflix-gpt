@@ -18,8 +18,6 @@ const GptSearchBar = () => {
     return json.results;
   };
 
-  console.log(searchText?.current);
-
   const handleGptSearchClick = async () => {
     const gptQuery =
       "You're tasked with providing movie recommendations based on user input. Please suggest a few movies related to the query:" +

@@ -9,7 +9,7 @@ import { checkValidate } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { BACKGROUND_IMAGE, USER_AVATAR, userAvatar } from "../utils/constants";
+import { BACKGROUND_IMAGE, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -27,11 +27,7 @@ const Login = () => {
   const handleTestButtonClick = () => {
     signInWithEmailAndPassword(auth, "ichiragtaluja@gmail.com", "Shivi@11111")
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-
-        // navigate("/browse");
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -41,8 +37,7 @@ const Login = () => {
   };
 
   const handleButtonClick = () => {
-    //validate form data
-    let nameValue = "Undefined"; // default value
+    let nameValue = "Undefined";
 
     if (name.current && name.current.value) {
       nameValue = name.current.value;
@@ -62,7 +57,6 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
 
           updateProfile(auth.currentUser, {
@@ -74,18 +68,13 @@ const Login = () => {
               dispatch(addUser({ uid, email, displayName }));
             })
             .catch((error) => {
-              // An error occurred
               setErrorMessage(error.message);
-              // ...
             });
-
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + "-" + errorMessage);
-          // ..
         });
     } else {
       signInWithEmailAndPassword(
@@ -94,11 +83,7 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
-
-          // navigate("/browse");
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -154,12 +139,6 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Sign-Up"}
         </button>
         {isSignInForm && (
-          // <button
-          //   onClick={handleButtonClick}
-          //   className="rounded-sm font-bold bg-red-600 p-3 mt-6  bg-blue-500 text-white"
-          // >
-          //   Login with Test Credentials
-          // </button>
           <button
             onClick={handleTestButtonClick}
             className="rounded-sm font-bold bg-blue-500 p-3 mt-6 border border-blue-500 text-white hover:bg-blue-400 hover:border-transparent transition-colors duration-300"
